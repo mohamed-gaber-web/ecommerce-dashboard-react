@@ -21,10 +21,10 @@ export default function CategoryForm({ initialData, onSubmit }: Props) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 p-4 bg-white rounded-2xl shadow">
+    <form onSubmit={handleSubmit} className="space-y-4 p-4 flex flex-row gap-4">
       <Input name="name" value={formData.name} onChange={handleChange} placeholder="Category Name" />
       <Input name="slug" value={formData.slug} onChange={handleChange} placeholder="Slug" />
-      <Button type="submit" className="w-full">Save</Button>
+      <Button type="submit" className="w-xss bg-blue-500 text-white hover:bg-blue-600 font-semibold text-xs">Save</Button>
     </form>
   );
 }

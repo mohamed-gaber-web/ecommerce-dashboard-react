@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import type { ICategory } from "@/types/category";
 import { Pencil, Trash2 } from "lucide-react";
-
+import '../categories.css';
 
 
 interface Props {
@@ -12,9 +12,9 @@ interface Props {
 }
 
 export default function CategoryTable({ categories, onEdit, onDelete }: Props) {
-  console.log("CAT", categories)
+  
   return (
-    <Table>
+    <Table className="table">
       <TableHeader>
         <TableRow>          
           <TableHead className="p-3">Name</TableHead>
@@ -28,7 +28,7 @@ export default function CategoryTable({ categories, onEdit, onDelete }: Props) {
             <TableCell  className="p-3">{cat.name}</TableCell >
             <TableCell  className="p-3">{cat.slug}</TableCell >
             <TableCell  className="p-3 flex gap-2">
-              <Button onClick={() => onEdit(cat._id!)} size="sm"><Pencil className="h-4 w-4" /> </Button>
+              <Button variant="outline" onClick={() => onEdit(cat._id!)} size="sm"><Pencil className="h-4 w-4" /> </Button>
               <Button variant="destructive" onClick={() => onDelete(cat._id!)} size="sm"><Trash2 className="h-4 w-4" /></Button>
             </TableCell >
           </TableRow>
