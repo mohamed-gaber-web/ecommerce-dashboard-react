@@ -5,6 +5,7 @@ import Dashboard from "@/pages/dashboard/dashboard";
 import Products from "@/pages/products/products";
 import CategoryList from "@/pages/categories/categories";
 import CreateCategory from "@/pages/categories/createCategory";
+import EditCategory from "@/pages/categories/editCategory";
 
 export const routes: RouteObject[] = [
   {
@@ -15,6 +16,7 @@ export const routes: RouteObject[] = [
       { path: "/products", element: <Products /> },
       { path: "/categories", element: <CategoryList /> },
       { path: "/categories/create", element: <CreateCategory /> },
+      { path: "/categories/edit/:id", element: <EditCategory /> },
       { path: "/brands", element: <Brands /> },
     ],
   },

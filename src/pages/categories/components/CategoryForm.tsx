@@ -1,7 +1,7 @@
+import { useState } from 'react';
+import type { ICategory } from '@/types/category';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import type { ICategory } from '@/types/category';
-import { useState } from 'react';
 
 interface Props {
   initialData?: ICategory;

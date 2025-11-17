@@ -8,17 +8,24 @@ import * as categoryApi from '@/services/category.service';
 interface CategoryState {
   list: ICategory[];
   loading: boolean;
+  selected: ICategory | null;
   error: string | null;
 }
 
 const initialState: CategoryState = {
   list: [],
   loading: false,
+  selected: null,
   error: null,
 };
 
 export const fetchCategories = createAsyncThunk('categories/fetchAll', async () => {
   return await categoryApi.getCategories();
+});
+
+// 🧠 Fetch category by ID (for edit page)
+export const fetchCategoryById = createAsyncThunk("categories/fetchById", async (id: string) => {
+  return await categoryApi.getCategoryById(id);
 });
 
 export const addCategory = createAsyncThunk('categories/add', async (payload: ICategory) => {
@@ -37,7 +44,11 @@ export const deleteCategoryById = createAsyncThunk('categories/delete', async (i
 const categorySlice = createSlice({
   name: 'categories',
   initialState,
-  reducers: {},
+  reducers: {
+    clearSelected: (state) => {
+      state.selected = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCategories.pending, (state) => {
@@ -46,6 +57,10 @@ const categorySlice = createSlice({
       .addCase(fetchCategories.fulfilled, (state, action) => {
         state.list = action.payload;
         state.loading = false;
+      })
+
+      .addCase(fetchCategoryById.fulfilled, (state, action) => {
+        state.selected = action.payload;
       })
       .addCase(addCategory.fulfilled, (state, action) => {
         state.list.push(action.payload);
@@ -65,4 +80,5 @@ const categorySlice = createSlice({
   },
 });
 
+export const { clearSelected } = categorySlice.actions;
 export default categorySlice.reducer;

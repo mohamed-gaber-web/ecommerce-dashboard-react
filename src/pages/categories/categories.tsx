@@ -23,19 +23,6 @@ export default function CategoryList() {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-//   const handleDelete = async (id: string) => {
-//     try {
-//       await dispatch(deleteCategoryById(id))
-//       toast.success("Category deleted 🗑️");
-//     } catch (error: unknown) {
-//       if (error instanceof Error) {
-//         toast.error("Error deleting category: " + error.message);
-//       } else {
-//         toast.error("An unknown error occurred");
-//     }
-// }
-//   };
-
 const handleDelete = async (id: string) => {
     const isConfirmed = await showDeleteConfirmation({
         title: "<p>Delete category?</p>",

@@ -11,7 +11,6 @@ export default function CreateCategory() {
 
   const handleSubmit = async (data: ICategory) => {
     await dispatch(addCategory(data));
-    
     navigate("/categories");
   };
 
